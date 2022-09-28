@@ -2,7 +2,8 @@
   "name": "sosoapi",
   "version": "0.0.1",
   "engines": {
-    "node": "18.x"
+    "node": "18.x",
+    "npm": "7.x"
   },
   "description": "",
   "author": "",
