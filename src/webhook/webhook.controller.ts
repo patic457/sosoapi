@@ -3,7 +3,10 @@ import { WebhookService } from './webhook.service';
 import { CreateWebhookDto } from './dto/create-webhook.dto';
 import { UpdateWebhookDto } from './dto/update-webhook.dto';
 
-@Controller('webhook')
+@Controller({
+  path: 'webhook',
+  version: '1'
+})
 export class WebhookController {
   constructor(private readonly webhookService: WebhookService) { }
 
