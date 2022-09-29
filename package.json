@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "engines": {
     "node": "18.x",
-    "npm": "7.x"
+    "npm": "8.x"
   },
   "scripts": {
     "start:prod": "node dist/main.js",
