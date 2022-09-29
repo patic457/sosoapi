@@ -13,11 +13,11 @@ async function appNetwork(app) {
 }
 
 async function bootstrap() {
-  const port = parseInt(process.env.APP_PORT) || 4000;
+  // const port = parseInt(process.env.APP_PORT) || 4000;
   const app = await NestFactory.create(AppModule);
   appNetwork(app);
-  app.listen(port, function () {
-    console.log("Server started Port : " + port);
+  app.listen(process.env.PORT || 4000, function () {
+    console.log("Server started Port : ");
   });
 
   if (module.hot) {
