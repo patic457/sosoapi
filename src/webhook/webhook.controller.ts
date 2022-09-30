@@ -2,6 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, Version } from '@nes
 import { WebhookService } from './webhook.service';
 import { CreateWebhookDto } from './dto/create-webhook.dto';
 import { UpdateWebhookDto } from './dto/update-webhook.dto';
+import { json } from 'stream/consumers';
 
 @Controller({
   path: 'webhook',
@@ -10,9 +11,13 @@ import { UpdateWebhookDto } from './dto/update-webhook.dto';
 export class WebhookController {
   constructor(private readonly webhookService: WebhookService) { }
 
-  @Post()
-  create(@Body() createWebhookDto: CreateWebhookDto) {
-    return this.webhookService.create(createWebhookDto);
+  // @Post()
+  // create(@Body() createWebhookDto: CreateWebhookDto) {
+  // return this.webhookService.create(createWebhookDto);
+  // }
+
+  @Post() create(@Body() createWebhookDto: CreateWebhookDto) {
+    return JSON.parse(JSON.stringify(createWebhookDto));
   }
 
   @Get()
