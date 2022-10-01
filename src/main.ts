@@ -12,16 +12,9 @@ async function appNetwork(app) {
   });
 }
 
-async function bootstrap() {
-  // const port = parseInt(process.env.APP_PORT) || 4000;
-  const app = await NestFactory.create(AppModule);
-  appNetwork(app);
+async function appListen(app) {
+    // const port = parseInt(process.env.APP_PORT) || 4000;
   app.listen(parseInt(process.env.PORT) || 4000, function () {
-    // var encode = Buffer.from("Hello World").toString('base64');
-    // var decode = Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii');
-
-
-    // console.log(port);
 
   });
 
@@ -30,4 +23,16 @@ async function bootstrap() {
     module.hot.dispose(() => app.close());
   }
 }
+
+async function appEncode(app) {
+    // var encode = Buffer.from("Hello World").toString('base64');
+    // var decode = Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii');
+}
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  appNetwork(app);
+  appListen(app);
+}
+
 bootstrap();
