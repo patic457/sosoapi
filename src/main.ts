@@ -13,11 +13,16 @@ async function appNetwork(app) {
 }
 
 async function bootstrap() {
-  // const port = parseInt(process.env.APP_PORT) || 4000;
+  const port = parseInt(process.env.APP_PORT) || 4000;
   const app = await NestFactory.create(AppModule);
   appNetwork(app);
-  app.listen(process.env.PORT || 4000, function () {
-    console.log("Server started Port : ");
+  app.listen(process.env.APP_PORT || 4000, function () {
+    // var encode = Buffer.from("Hello World").toString('base64');
+    // var decode = Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii');
+
+
+    console.log(port);
+
   });
 
   if (module.hot) {
