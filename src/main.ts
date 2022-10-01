@@ -13,8 +13,8 @@ async function appNetwork(app) {
 }
 
 async function appListen(app) {
-    // const port = parseInt(process.env.APP_PORT) || 4000;
-  app.listen(parseInt(process.env.APP_PORT)  || 4009, function () {
+    const port = parseInt(process.env.PORT) || 4000;
+  app.listen(port, function () {
 
   });
 
