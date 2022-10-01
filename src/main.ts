@@ -16,7 +16,7 @@ async function bootstrap() {
   // const port = parseInt(process.env.APP_PORT) || 4000;
   const app = await NestFactory.create(AppModule);
   appNetwork(app);
-  app.listen(4000, function () {
+  app.listen(parseInt(process.env.PORT) || 4000, function () {
     // var encode = Buffer.from("Hello World").toString('base64');
     // var decode = Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii');
 
