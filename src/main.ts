@@ -16,8 +16,6 @@ async function appListen(app) {
   const port = parseInt(process.env.PORT) || 4000;
   app.listen(port, function () {
 
-    console.log(process.env.DATABASE_URL);
-
   });
 
   if (module.hot) {
