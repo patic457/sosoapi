@@ -14,7 +14,7 @@ async function appNetwork(app) {
 
 async function appListen(app) {
     // const port = parseInt(process.env.APP_PORT) || 4000;
-  app.listen(parseInt(process.env.PORT) || 4000, function () {
+  app.listen(parseInt(ENV['APP_PORT']) || 4009, function () {
 
   });
 
@@ -24,10 +24,10 @@ async function appListen(app) {
   }
 }
 
-async function appEncode(app) {
+// async function appEncode(app) {
     // var encode = Buffer.from("Hello World").toString('base64');
     // var decode = Buffer.from("SGVsbG8gV29ybGQ=", 'base64').toString('ascii');
-}
+// }
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
