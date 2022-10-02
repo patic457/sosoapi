@@ -3,11 +3,9 @@ import { ApiProperty } from '@nestjs/swagger';
 export class CreateWebhookDto {
     
   @ApiProperty()
-  name: string;
+  id: number;
 
   @ApiProperty()
-  age: number;
+  list: string;
 
-  @ApiProperty()
-  breed: string;
 }

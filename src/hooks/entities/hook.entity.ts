@@ -1,11 +1,9 @@
-
-
 import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
 
 @Entity()
-export class Webhook {
+export class Hook {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id: number;
 
     @Column({
@@ -13,3 +11,5 @@ export class Webhook {
     })
     list: string;
 }
+
+

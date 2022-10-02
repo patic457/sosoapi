@@ -11,14 +11,14 @@ import { json } from 'stream/consumers';
 export class WebhookController {
   constructor(private readonly webhookService: WebhookService) { }
 
-  // @Post()
-  // create(@Body() createWebhookDto: CreateWebhookDto) {
-  // return this.webhookService.create(createWebhookDto);
-  // }
-
-  @Post() create(@Body() createWebhookDto: CreateWebhookDto) {
-    return JSON.parse(JSON.stringify(createWebhookDto));
+  @Post()
+  create(@Body() createWebhookDto: CreateWebhookDto) {
+  return this.webhookService.create(createWebhookDto);
   }
+
+  // @Post() create(@Body() createWebhookDto: CreateWebhookDto) {
+  //   return JSON.parse(JSON.stringify(createWebhookDto));
+  // }
 
   @Get()
   findAll() {
