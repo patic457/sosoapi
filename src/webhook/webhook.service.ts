@@ -13,11 +13,7 @@ export class WebhookService {
   // ) { }
 
   async create(createWebhookDto: CreateWebhookDto) {
-    const hook = new Webhook();
-    // JSON.parse(JSON.stringify(createWebhookDto));
-    // hook.id = 2;
-    hook.list = "Hi";
-    // hook.list = '{"txt":"Hi"}';
+
     // return await this.webhookReposity.save(hook);
   }
 

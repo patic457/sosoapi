@@ -18,7 +18,7 @@ export class HookController {
     const hook = await this.hookService.create(createHookDto);
     return {
       id: hook.id,
-      list: hook.list
+      list: hook.event
     }
   }
 

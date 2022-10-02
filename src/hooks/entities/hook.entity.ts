@@ -9,7 +9,7 @@ export class Hook {
     @Column({
         type: 'longtext'
     })
-    list: string;
+    event: string;
 }
 
 

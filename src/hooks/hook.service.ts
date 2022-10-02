@@ -15,7 +15,7 @@ export class HookService {
 
   async create(createHookDto: CreateHookDto) : Promise<Hook> {
     var hook = new Hook();
-    hook.list = createHookDto.list;
+    hook.event = createHookDto.list;
     return await this.hookRepository.save(hook);
   }
 
