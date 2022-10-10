@@ -2,15 +2,12 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
-import { WebhookModule } from './webhook/webhook.module';
-import { BelongModule } from './belong/belong.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Webhook } from './webhook/entities/webhook.entity';
-import { HookModule } from './hooks/hook.module';
-import { Hook } from './hooks/entities/hook.entity';
+import { WebhooksModule } from './webhooks/webhooks.module';
 
 
-let data = 'aXU1MW1mMHEzMmZraGZwbC5jYmV0eGtkeWh3c2IudXMtZWFzdC0xLnJkcy5hbWF6b25hd3MuY29t';
+let dataMy = 'aXU1MW1mMHEzMmZraGZwbC5jYmV0eGtkeWh3c2IudXMtZWFzdC0xLnJkcy5hbWF6b25hd3MuY29t';
+let dataPg = "ZWMyLTQ0LTIwNS0xNzctMTYwLmNvbXB1dGUtMS5hbWF6b25hd3MuY29t";
 
 function DeCode(txt) {
   let buff = new Buffer(txt, 'base64');
@@ -20,19 +17,22 @@ function DeCode(txt) {
 
 @Module({
   imports: [
-    WebhookModule,
-    HookModule,
     ConfigModule.forRoot(),
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: DeCode(data),
+      host: DeCode(dataMy),
       port: 3306,
       username: 'de7p9prkwmh3kquo',
       password: 'j2batag6pvrfimgh',
       database: 'g3uky2wss1pv3jyv',
-      entities: [Hook],
+
+      // username: 'gggcnwwmjihicn',
+      // password: 'ba1c42868e17603c0dc488686c769b7b1b034ae6b5344f009d8594eed87b769c',
+      // database: 'd8k7dbo77j4dar',
+      entities: [],
       synchronize: false,
     }),
+    WebhooksModule,
   ],
   controllers: [AppController],
   providers: [AppService],
