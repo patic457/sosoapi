@@ -7,6 +7,7 @@ import { UpdateWebhookDto } from './dto/update-webhook.dto';
   path: "webhook",
   version: "1"
 })
+
 export class WebhooksController {
   constructor(private readonly webhooksService: WebhooksService) {}
 
