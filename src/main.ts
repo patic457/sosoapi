@@ -2,20 +2,19 @@ import { VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
+import { TicketModule } from './ticket/ticket.module';
 
 
 declare const module: any;
 
 function appSwagger(app) {
   const config = new DocumentBuilder()
-    .setTitle('PagerDuty Webhook')
-    .setDescription('PagerDuty API')
+    .setTitle('Ticket Tool Document')
+    .setDescription('Ticket Tool API')
     .setVersion('1.0')
-    .addTag('PagerDuty')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-    include: [],
-  
+    include: [TicketModule],
   });
   SwaggerModule.setup('apiDocs', app, document);
 }

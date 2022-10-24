@@ -3,11 +3,11 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { WebhooksModule } from './webhooks/webhooks.module';
+import { TicketModule } from './ticket/ticket.module';
+import { Ticket } from './ticket/entities/ticket.entity';
 
 
 let dataMy = 'aXU1MW1mMHEzMmZraGZwbC5jYmV0eGtkeWh3c2IudXMtZWFzdC0xLnJkcy5hbWF6b25hd3MuY29t';
-let dataPg = "ZWMyLTQ0LTIwNS0xNzctMTYwLmNvbXB1dGUtMS5hbWF6b25hd3MuY29t";
 
 function DeCode(txt) {
   let buff = new Buffer(txt, 'base64');
@@ -26,10 +26,10 @@ function DeCode(txt) {
       username: 'de7p9prkwmh3kquo',
       password: 'j2batag6pvrfimgh',
       database: 'g3uky2wss1pv3jyv',
-      entities: [],
+      entities: [Ticket],
       synchronize: false,
     }),
-    WebhooksModule,
+    TicketModule,
   ],
   controllers: [AppController],
   providers: [AppService],
