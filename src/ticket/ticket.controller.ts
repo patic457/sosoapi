@@ -3,6 +3,7 @@ import { TicketService } from './ticket.service';
 import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { Ticket } from './entities/ticket.entity';
+import { ApiParam } from '@nestjs/swagger';
 
 
 @Controller('ticket')
@@ -20,6 +21,7 @@ export class TicketController {
   }
 
   @Get('/:id')
+  @ApiParam({ name: 'id', type: 'string' })
   getSingleTree(@Param() params: { id: string }): Promise<Ticket> {
     return this.ticketService.findOne(params.id);
   }
@@ -30,7 +32,9 @@ export class TicketController {
   // }
 
   // @Delete(':id')
+  // @ApiParam({ name: 'id', type: 'string' })
   // remove(@Param('id') id: string) {
   //   return this.ticketService.remove(+id);
   // }
+  
 }
