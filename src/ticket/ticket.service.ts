@@ -34,7 +34,7 @@ export class TicketService {
     return this.ticketRepository.findBy({ status: In(["triggered", "acknowledged"]) });
   }
 
-  async findOneStatus(findStatus: string): Promise<Ticket> {
+  async findOneStatus(findStatus: string){
     return await this.ticketRepository.findOneBy({ status: findStatus });
   }
 
