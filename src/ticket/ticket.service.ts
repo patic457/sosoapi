@@ -22,6 +22,10 @@ export class TicketService {
     return this.ticketRepository.find();
   }
 
+  findOneStatus(): Promise<Ticket> {
+    return this.ticketRepository.findOneBy({ status: "triggered" });
+  }
+
   findOne(id: string): Promise<Ticket> {
     return this.ticketRepository.findOneBy({ id });
   }

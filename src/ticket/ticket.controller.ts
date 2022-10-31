@@ -20,6 +20,11 @@ export class TicketController {
     return this.ticketService.findAll();
   }
 
+  @Get()
+  findStatus() {
+    return this.ticketService.findOneStatus;
+  }
+
   @Get('/:id')
   @ApiParam({ name: 'id', type: 'string' })
   getSingleTree(@Param() params: { id: string }): Promise<Ticket> {

@@ -2,7 +2,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Entity, Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity({ name: '_Ticket' })
+@Entity({
+    name: '_Ticket',
+    orderBy: {
+        updatedAt: "DESC"
+    },
+})
 export class Ticket {
     @ApiProperty()
     @PrimaryGeneratedColumn()
