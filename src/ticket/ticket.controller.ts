@@ -20,10 +20,10 @@ export class TicketController {
     return this.ticketService.findAll();
   }
 
-  @Get('/status/:status')
-  @ApiParam({ name: 'status', type: 'string' })
-  findStatus(params: { status: string }): Promise<Ticket> {
-    return this.ticketService.findStatus(params.status);
+  @Get('/status/:findStatus')
+  @ApiParam({ name: 'findStatus', type: 'string' })
+  getStatus(@Param() params: { findStatus: string }): Promise<Ticket> {
+    return this.ticketService.findOneStatus(params.findStatus);
   }
 
   @Get('/:id')

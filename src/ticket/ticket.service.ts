@@ -22,9 +22,8 @@ export class TicketService {
     return this.ticketRepository.find();
   }
 
-  findStatus(status: string): Promise<Ticket> {
-    return this.ticketRepository.findOneBy({ status });
-
+  async findOneStatus(findStatus: string): Promise<Ticket> {
+    return await this.ticketRepository.findOneBy({ status: findStatus });
   }
 
   findOne(id: string): Promise<Ticket> {
