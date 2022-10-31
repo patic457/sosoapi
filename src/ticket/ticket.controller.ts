@@ -20,9 +20,10 @@ export class TicketController {
     return this.ticketService.findAll();
   }
 
-  @Get()
-  findStatus() {
-    return this.ticketService.findOneStatus;
+  @Get('/status/:status')
+  @ApiParam({ name: 'status', type: 'string' })
+  findStatus(params: { status: string }): Promise<Ticket> {
+    return this.ticketService.findStatus(params.status);
   }
 
   @Get('/:id')
@@ -41,5 +42,5 @@ export class TicketController {
   // remove(@Param('id') id: string) {
   //   return this.ticketService.remove(+id);
   // }
-  
+
 }
