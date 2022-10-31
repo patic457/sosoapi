@@ -3,7 +3,7 @@ import { CreateTicketDto } from './dto/create-ticket.dto';
 import { UpdateTicketDto } from './dto/update-ticket.dto';
 import { Ticket } from './entities/ticket.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, In } from 'typeorm';
 
 @Injectable()
 export class TicketService {
@@ -23,11 +23,15 @@ export class TicketService {
     return await this.ticketRepository.find();
   }
 
-  async findStatusDashboard(): Promise<Ticket> {
+  async findStatus(): Promise<Ticket> {
     const find = await this.ticketRepository.createQueryBuilder('_Ticket')
       .where("_Ticket.status = :status", { status: "triggered" })
       .getOne();
     return find;
+  }
+
+  findStatusDashboard() {
+    return this.ticketRepository.findBy({ status: In(["triggered", "acknowledged"]) });
   }
 
   async findOneStatus(findStatus: string): Promise<Ticket> {

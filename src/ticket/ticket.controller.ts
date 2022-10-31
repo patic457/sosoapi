@@ -27,13 +27,18 @@ export class TicketController {
   }
 
   @Get('/status')
-  getStatusDashboard(): Promise<Ticket> {
+  getStatus(): Promise<Ticket> {
+    return this.ticketService.findStatus();
+  }
+
+  @Get('/statusDashboard')
+  getStatusDashboard() {
     return this.ticketService.findStatusDashboard();
   }
 
   @Get('/status/:findStatus')
   @ApiParam({ name: 'findStatus', type: 'string' })
-  getStatus(@Param() params: { findStatus: string }): Promise<Ticket> {
+  getOneStatus(@Param() params: { findStatus: string }): Promise<Ticket> {
     return this.ticketService.findOneStatus(params.findStatus);
   }
 
