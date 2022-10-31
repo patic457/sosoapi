@@ -7,8 +7,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class TicketService {
-
   constructor(
+
+
     @InjectRepository(Ticket)
     private ticketRepository: Repository<Ticket>,
   ) { }
@@ -18,8 +19,15 @@ export class TicketService {
   }
 
 
-  findAll(): Promise<Ticket[]> {
-    return this.ticketRepository.find();
+  async findAll(): Promise<Ticket[]> {
+    return await this.ticketRepository.find();
+  }
+
+  async findStatusDashboard(): Promise<Ticket> {
+    const find = await this.ticketRepository.createQueryBuilder('_Ticket')
+      .where("_Ticket.status = :status", { status: "triggered" })
+      .getOne();
+    return find;
   }
 
   async findOneStatus(findStatus: string): Promise<Ticket> {
@@ -38,3 +46,7 @@ export class TicketService {
     return `This action removes a #${id} ticket`;
   }
 }
+function InjectConnection() {
+  throw new Error('Function not implemented.');
+}
+

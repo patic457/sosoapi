@@ -20,17 +20,24 @@ export class TicketController {
     return this.ticketService.findAll();
   }
 
+  @Get('/:id')
+  @ApiParam({ name: 'id', type: 'string' })
+  getSingleTree(@Param() params: { id: string }): Promise<Ticket> {
+    return this.ticketService.findOne(params.id);
+  }
+
+  @Get('/status')
+  getStatusDashboard(): Promise<Ticket> {
+    return this.ticketService.findStatusDashboard();
+  }
+
   @Get('/status/:findStatus')
   @ApiParam({ name: 'findStatus', type: 'string' })
   getStatus(@Param() params: { findStatus: string }): Promise<Ticket> {
     return this.ticketService.findOneStatus(params.findStatus);
   }
 
-  @Get('/:id')
-  @ApiParam({ name: 'id', type: 'string' })
-  getSingleTree(@Param() params: { id: string }): Promise<Ticket> {
-    return this.ticketService.findOne(params.id);
-  }
+
 
   // @Patch(':id')
   // update(@Param('id') id: string, @Body() updateTicketDto: UpdateTicketDto) {
